@@ -1,0 +1,26 @@
+cd "D:\ЧНУ\02. Другий семестр\Інжиніринг даних\LAB3"
+
+docker compose up -d
+
+docker ps
+(вивід списка контейнерів)
+
+docker exec -it kafka1 kafka-run-class kafka.tools.GetOffsetShell --broker-list kafka1:29092 --topic topic1
+(перевірка що в топіку є 200тис записів)
+
+Spring Boot -> KafkaStreamsLab4Application (IntelliJ)
+
+docker exec -it kafka1 kafka-run-class kafka.tools.GetOffsetShell --broker-list kafka1:29092 --topic avg-duration-topic-test3
+(кількість записів в пункті А)
+
+docker exec -it kafka1 kafka-console-consumer --topic avg-duration-topic-test3 --bootstrap-server kafka1:29092 --from-beginning
+(вивід результатів пункт А)
+
+docker exec -it kafka1 kafka-run-class kafka.tools.GetOffsetShell --broker-list kafka1:29092 --topic trips-count-topic
+(кількість записів в пункті В)
+
+docker exec -it kafka1 kafka-console-consumer --topic trips-count-topic --bootstrap-server kafka1:29092 --from-beginning
+(вивід результатів пункт В)
+
+docker exec -it kafka1 kafka-topics --create --topic popular-station-topic --bootstrap-server kafka1:29092 --replication-factor 2 --partitions 1
+(створення топіку для пункту С)
