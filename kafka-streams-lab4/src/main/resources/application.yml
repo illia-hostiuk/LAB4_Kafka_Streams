@@ -3,7 +3,7 @@ spring:
     bootstrap-servers: localhost:9092
 
     streams:
-      application-id: kafka-streams-lab4-v9
+      application-id: kafka-streams-lab4-v10
 
       properties:
         default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
