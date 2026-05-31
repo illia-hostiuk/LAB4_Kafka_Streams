@@ -10,6 +10,8 @@ docker exec -it kafka1 kafka-run-class kafka.tools.GetOffsetShell --broker-list 
 
 Spring Boot -> KafkaStreamsLab4Application (IntelliJ)
 
+http://localhost:8080  -  Kafka UI
+
 docker exec -it kafka1 kafka-run-class kafka.tools.GetOffsetShell --broker-list kafka1:29092 --topic avg-duration-topic-test3
 (кількість записів в пункті А)
 
@@ -22,5 +24,14 @@ docker exec -it kafka1 kafka-run-class kafka.tools.GetOffsetShell --broker-list 
 docker exec -it kafka1 kafka-console-consumer --topic trips-count-topic --bootstrap-server kafka1:29092 --from-beginning
 (вивід результатів пункт В)
 
-docker exec -it kafka1 kafka-topics --create --topic popular-station-topic --bootstrap-server kafka1:29092 --replication-factor 2 --partitions 1
-(створення топіку для пункту С)
+docker exec -it kafka1 kafka-run-class kafka.tools.GetOffsetShell --broker-list kafka1:29092 --topic popular-station-topic
+(кількість записів в пункті С)
+
+docker exec -it kafka1 kafka-console-consumer --topic popular-station-topic --bootstrap-server kafka1:29092 --from-beginning
+(вивід результатів пункт С)
+
+docker exec -it kafka1 kafka-run-class kafka.tools.GetOffsetShell --broker-list kafka1:29092 --topic top3-stations-topic
+(кількість записів в пункті D)
+
+docker exec -it kafka1 kafka-console-consumer --topic top3-stations-topic --bootstrap-server kafka1:29092 --from-beginning
+(вивід результатів пункт D)
